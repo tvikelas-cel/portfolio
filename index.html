@@ -168,6 +168,11 @@
   .proj:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow)}
   .proj::after{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--accent),var(--warm));opacity:0;transition:opacity .25s}
   .proj:hover::after{opacity:1}
+  .proj::before{content:"";position:absolute;inset:0;background:var(--pbg,linear-gradient(135deg,var(--accent),var(--warm)));opacity:.13;z-index:0;transition:opacity .3s}
+  .proj:hover::before{opacity:.22}
+  .proj>*:not(.motif){position:relative;z-index:1}
+  .proj .motif{position:absolute;right:-6px;bottom:-24px;font-size:112px;line-height:1;opacity:.08;z-index:0;transform:rotate(-8deg);pointer-events:none}
+  .proj:hover .motif{opacity:.14}
   .proj.feat{border-color:color-mix(in srgb,var(--warm) 40%,var(--hair))}
   .proj-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
   .proj .cat{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);font-weight:700}
@@ -305,7 +310,7 @@
       <div class="body rv">
         <p>J'ai 30 ans et je me suis formé seul, par la pratique. Plutôt que de suivre un chemin tout tracé, j'apprends en <strong>livrant de vraies applications</strong> — chacune me fait franchir une marche technique de plus.</p>
         <p>L'arrivée des <strong>agents d'IA</strong> a changé ma manière de travailler : je code en binôme quotidien avec Cursor, Claude, Gemini et DeepSeek pour concevoir des architectures solides, aller plus vite, et apprendre en profondeur.</p>
-        <p>Le fil rouge de mes projets, c'est <strong>l'humain</strong> : une app pour aider ma mère au quotidien, un marché pour les producteurs locaux, un outil de réutilisation de l'eau de pluie, un assistant personnel qui me simplifie la vie. Je construis des choses qui servent.</p>
+        <p>Le fil rouge de mes projets, c'est <strong>l'humain</strong> : une application qui aide les personnes ayant des problèmes de santé à garder le lien avec leurs soignants, un outil de réutilisation de l'eau de pluie, un assistant personnel qui me simplifie la vie. Je construis des choses qui servent.</p>
       </div>
       <div class="hl rv">
         <div class="card"><span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></span><div><h3>De l'idée au produit livré</h3><p>Conception, dév, intégration d'API, et APK installable sur Android. Pas des exercices : des produits.</p></div></div>
@@ -543,12 +548,6 @@
      need:"Créer des petites BD à partir de photos, sans coût et sans friction.",
      built:"Une app web Next.js qui analyse une photo avec Gemini 2.5-flash puis génère les 4 cases illustrées via Pollinations — le tout gratuit.",
      stack:["Next.js","TypeScript","Gemini 2.5-flash","Pollinations","Tailwind"]},
-    {id:"recolte",cat:"mobile",feat:0,label:"Marketplace · Firebase",name:"RÉCOLTE",
-     one:"Une place de marché reliant producteurs locaux et particuliers, en logique gagnant-gagnant.",
-     tags:["Firebase","Firestore","Auth","Web + APK"],
-     need:"Rapprocher les producteurs locaux des consommateurs de Nouvelle-Aquitaine, avec de la vente croisée plutôt que du partage de fichiers clients.",
-     built:"Une marketplace (web + application) branchée sur Firebase : authentification et base Firestore opérationnelles et testées. Pensée dès le départ pour le respect du RGPD.",
-     stack:["Firebase Auth","Firestore","Web","Capacitor (APK)","RGPD by design"]},
     {id:"aura",cat:"mobile",feat:0,label:"App bien-être · Capacitor",name:"AURA",
      one:"Une app de bien-être et de spiritualité, autonome et multilingue.",
      tags:["Capacitor","Multilingue","Abonnement"],
@@ -561,11 +560,11 @@
      need:"Comparer rapidement les prix d'un produit depuis son téléphone.",
      built:"Un front mobile servi par un serveur proxy Node/Express (qui protège la clé RapidAPI), avec un mode démo et un mode live, empaqueté en APK Capacitor pointant sur le serveur local.",
      stack:["Node.js / Express","Proxy RapidAPI","Capacitor","Cache JSON","APK Android"]},
-    {id:"aidemaman",cat:"mobile",feat:0,label:"App senior & aidants · Capacitor",name:"Auprès",
-     one:"App pour seniors et aidants : rappels de médicaments, SOS géolocalisé et espace aidant — pensée pour l'accessibilité.",
+    {id:"aidemaman",cat:"mobile",feat:0,label:"App santé & aidants · Capacitor",name:"Auprès",
+     one:"App pour les personnes ayant des problèmes de santé et leurs aidants : rappels de médicaments, SOS géolocalisé et lien avec les soignants.",
      tags:["Capacitor","React","Android signé","Accessibilité","SOS GPS"],
-     need:"Accompagner une personne âgée ou dépendante au quotidien — née d'un besoin familial réel — avec une interface très accessible : gros boutons, texte agrandissable, lecture vocale.",
-     built:"Une app Android signée : rappels de médicaments qui sonnent même app fermée, SOS par SMS pré-rempli + appel avec la position GPS, « Espace Aidant » protégé par code (dossier de santé, calendrier de visites) et zoom d'accessibilité global. Deux modes : Senior simple / Aidant riche.",
+     need:"Aider les personnes fragiles ou ayant des problèmes de santé à rester autonomes au quotidien et à garder le lien avec leurs soignants et leurs proches aidants — avec une interface très accessible : gros boutons, texte agrandissable, lecture vocale.",
+     built:"Une app Android signée : rappels de médicaments qui sonnent même app fermée, SOS par SMS pré-rempli + appel avec la position GPS, « Espace Aidant » protégé par code (dossier de santé, calendrier de visites, lien avec les soignants) et zoom d'accessibilité global. Deux modes : simple / Aidant riche.",
      stack:["Capacitor","React","Android (APK signé)","Accessibilité (zoom + vocal)","SOS SMS + GPS","Espace aidant (PIN)"]},
     {id:"carteméteo",cat:"web",feat:1,label:"Web interactif · HTML/JS",name:"Carte météo du monde",
      one:"Une carte interactive mondiale : météo, vols, feux et visualisation 3D en temps réel.",
@@ -621,8 +620,29 @@
   ];
 
   var grid=document.getElementById("grid");
+  var THEME={
+    souffle:['linear-gradient(135deg,#38bdf8,#22d3a7)','🫧'],
+    geotrack:['linear-gradient(135deg,#34d399,#3b82f6)','🗺️'],
+    superboby:['linear-gradient(135deg,#8b5cf6,#4ea8ff)','🤖'],
+    wildrift:['linear-gradient(135deg,#f59e0b,#ef4444)','⚔️'],
+    flotte:['linear-gradient(135deg,#6366f1,#22d3ee)','🛰️'],
+    comicforge:['linear-gradient(135deg,#ec4899,#f59e0b)','🎨'],
+    aura:['linear-gradient(135deg,#a855f7,#6366f1)','🧘'],
+    comparo:['linear-gradient(135deg,#f59e0b,#10b981)','🏷️'],
+    aidemaman:['linear-gradient(135deg,#10b981,#06b6d4)','🫶'],
+    'carteméteo':['linear-gradient(135deg,#0ea5e9,#6366f1)','🌍'],
+    facturio:['linear-gradient(135deg,#64748b,#3b82f6)','🧾'],
+    aqualocal:['linear-gradient(135deg,#06b6d4,#3b82f6)','💧'],
+    transmute:['linear-gradient(135deg,#14b8a6,#6366f1)','📊'],
+    officekit:['linear-gradient(135deg,#3b82f6,#64748b)','📄'],
+    farmtopia:['linear-gradient(135deg,#84cc16,#f59e0b)','🌾'],
+    survivor:['linear-gradient(135deg,#ef4444,#8b5cf6)','👾'],
+    sneakrewind:['linear-gradient(135deg,#22d3ee,#8b5cf6)','⏪']
+  };
   function cardHTML(p){
-    return '<article class="proj'+(p.feat?' feat':'')+'" data-cat="'+p.cat+'" data-id="'+p.id+'" tabindex="0" role="button">'
+    var th=THEME[p.id]||['linear-gradient(135deg,#4ea8ff,#f5b74e)','✦'];
+    return '<article class="proj'+(p.feat?' feat':'')+'" data-cat="'+p.cat+'" data-id="'+p.id+'" tabindex="0" role="button" style="--pbg:'+th[0]+'">'
+      +'<span class="motif" aria-hidden="true">'+th[1]+'</span>'
       +'<div class="proj-top"><span class="cat">'+p.label+'</span>'+(p.feat?'<span class="feat-tag">★ Mis en avant</span>':'')+'</div>'
       +'<h3>'+p.name+'</h3>'
       +'<p class="oneliner">'+p.one+'</p>'
